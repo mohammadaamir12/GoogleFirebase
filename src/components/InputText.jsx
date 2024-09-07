@@ -1,7 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 
-const InputText = ({placeholder,customStyle,value,setValue}) => {
+const InputText = ({placeholder,customStyle,value,setValue,errorMessage,max,secure}) => {
   return (
     <View style={{width:'85%'}}>
         <TextInput 
@@ -9,8 +9,11 @@ const InputText = ({placeholder,customStyle,value,setValue}) => {
         placeholder={placeholder}
         placeholderTextColor={'grey'}
         value={value}
+        maxLength={max}
         onChangeText={setValue} 
+        secureTextEntry={secure=='true'?true:false}
         />
+         {errorMessage ? <Text style={{ color: 'red', marginTop: 5 }}>{errorMessage}</Text> : null}
     </View>
   )
 }

@@ -5,12 +5,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import Register from '../screens/Register';
 import Login from '../screens/Login';
+import {useSelector} from 'react-redux'
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
+    const userid=useSelector(state=>state.user.userId)
+    console.log(userid);
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{headerShown:false}}>
+            <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='Home'>
                 <Stack.Screen name="Register" component={Register} />
                 < Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Home" component={HomeScreen} />
